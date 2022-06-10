@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -6487841869104665160}
   m_Layer: 0
   m_Name: FireBall
-  m_TagString: Untagged
+  m_TagString: pDamage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,4 +125,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feee32dc660529e4fb6ff9e8f13dc71f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthSystem1: {fileID: 0}
+  damage: {fileID: 0}

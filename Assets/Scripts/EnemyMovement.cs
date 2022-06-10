@@ -5,16 +5,23 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public Transform target;
+    public HealthSystem damage;
+
     private string currentState = "idleState";
 
     public float chaseDistance = 5;
+    public int attackStrength;
     public float attackDistance = 2;
+    float lastAttack;
+    public float attackDelay = 1;
     public float speed = 3;
 
 
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        damage = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthSystem>();
+
     }
 
 
@@ -57,6 +64,12 @@ public class EnemyMovement : MonoBehaviour
         }
         else if (currentState == "attackState")
         {
+            if (Time.time > lastAttack + attackDelay)
+            {
+                damage.TakeDamage(attackStrength);
+                lastAttack = Time.time;
+            }
+
             if (distance > attackDistance)
             {
                 currentState = "chaseState";

@@ -10,6 +10,7 @@ public class FireBall : MonoBehaviour
     
     void Start()
     {
+        damage = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthSystem>();
         StartCoroutine(SelfDestruct());
     }
 
@@ -25,7 +26,7 @@ public class FireBall : MonoBehaviour
         {
 
             damage.TakeDamage(10);
-            Debug.Log("Took damage :)");
+            //Debug.Log("Took damage :)");
             Destroy(gameObject);
 
         }

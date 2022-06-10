@@ -35,7 +35,7 @@ public class EnemyRangeAttack : MonoBehaviour
                 
                    
                     Debug.DrawLine(enemy.transform.position, enemy.transform.forward, Color.red, LayerMask.NameToLayer("Player"));
-                    Debug.Log("Got hit :(");
+                    //Debug.Log("Got hit :(");
                     transform.LookAt(target);
                     attack();
                     lastAttack = Time.time;
