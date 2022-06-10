@@ -32,8 +32,7 @@ public class EnemyRangeAttack : MonoBehaviour
                 RaycastHit Hit;
                 if (Physics.Raycast(enemy.transform.position, enemy.transform.forward, out Hit, LayerMask.NameToLayer("Player")))
                 
-                
-                   
+                                   
                     Debug.DrawLine(enemy.transform.position, enemy.transform.forward, Color.red, LayerMask.NameToLayer("Player"));
                     //Debug.Log("Got hit :(");
                     transform.LookAt(target);
@@ -48,7 +47,6 @@ public class EnemyRangeAttack : MonoBehaviour
     {
         GameObject newfireball = Instantiate(FireBall, transform.position + (transform.forward * 1), transform.rotation);
         newfireball.GetComponent<Rigidbody>().AddForce(transform.forward * projectileForce, ForceMode.Impulse);
-
-        
+                
     }
 }

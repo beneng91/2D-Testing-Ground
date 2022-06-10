@@ -7,6 +7,7 @@ public class characterController : MonoBehaviour
     public CharacterController controller;
     private Vector3 direction;
     public float speed = 8;
+    public float sprint;
 
     public float jumpForce = 5;
     public float gravity = -10;
@@ -25,11 +26,25 @@ public class characterController : MonoBehaviour
     
     void Update()
     {
-        float hInput = Input.GetAxis("Horizontal");
-        
-        direction.x = hInput * speed;
+        //Sprint
+        if (Input.GetKey("left shift"))
+        {
+            float hInput = Input.GetAxis("Horizontal");
 
-        direction.y += gravity * Time.deltaTime;
+            direction.x = hInput * (speed * sprint);
+
+            direction.y += gravity * Time.deltaTime;
+        }
+        //Jog
+        else
+        {
+            float hInput = Input.GetAxis("Horizontal");
+
+            direction.x = hInput * speed;
+
+            direction.y += gravity * Time.deltaTime;
+        }
+
        
         
 
