@@ -7,7 +7,7 @@ public class HealthSystem : MonoBehaviour
     //Health
     public float playerHealth = 100;
     public PropertyMeter healthMeter;
-    private float playerCurrentHealth = 0;
+    public float playerCurrentHealth = 0;
 
     //UI
     public Text gameOutputText;
