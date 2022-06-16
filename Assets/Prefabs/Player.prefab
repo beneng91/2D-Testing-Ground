@@ -70,10 +70,10 @@ GameObject:
   - component: {fileID: 7645289190219681383}
   - component: {fileID: 7645289190219681376}
   - component: {fileID: 7645289190219681382}
-  - component: {fileID: 7645289190219681381}
   - component: {fileID: 7645289190219681380}
   - component: {fileID: 7645289190219681435}
   - component: {fileID: 7645289190219681377}
+  - component: {fileID: 3931376133548246682}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -146,20 +146,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7645289190219681381
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7645289190219681434}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &7645289190219681380
 CharacterController:
   m_ObjectHideFlags: 0
@@ -222,6 +208,19 @@ MonoBehaviour:
   quitButton: {fileID: 0}
   player: {fileID: 7645289190219681434}
   menu: {fileID: 0}
+--- !u!65 &3931376133548246682
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7645289190219681434}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.53215504, y: 2, z: 1.7970679}
+  m_Center: {x: -0.0315423, y: 0, z: 0.04853496}
 --- !u!1001 &3489730808339290721
 PrefabInstance:
   m_ObjectHideFlags: 0
