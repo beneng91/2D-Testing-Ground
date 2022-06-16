@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
     public Transform target;
+    NavMeshAgent agent;
     public HealthSystem damage;
     public Animator animator;
 
@@ -21,11 +23,21 @@ public class EnemyMovement : MonoBehaviour
     public float speed = 3;
 
 
-    void Start()
+    IEnumerator Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         damage = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthSystem>();
         health = maxHealth;
+        agent = GetComponent<NavMeshAgent>();
+        agent.autoTraverseOffMeshLink = false;
+        while (true)
+        {
+            if (agent.isOnOffMeshLink)
+            {
+                Debug.Log("Mesh link jump");
+            }
+            yield return null;
+        }
 
     }
 
@@ -33,6 +45,7 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(transform.position, target.position);
+        agent.destination = target.position;
         
 
         if (currentState == "idleState")
@@ -56,15 +69,23 @@ public class EnemyMovement : MonoBehaviour
             //move right
             if (target.position.x > transform.position.x)
             {
-                transform.Translate(transform.right * speed * Time.deltaTime);
-                transform.rotation = Quaternion.Euler(0, 180, 0);
+                if (distance >= 1.8f)
+                {
+                    transform.Translate(transform.right * speed * Time.deltaTime);
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
+
             }
 
             //move left
             else
             {
-                transform.Translate(-transform.right * speed * Time.deltaTime);
-                transform.rotation = Quaternion.identity;
+                if (distance >= 1.8f)
+                {
+                    transform.Translate(-transform.right * speed * Time.deltaTime);
+                    transform.rotation = Quaternion.identity;
+                }
+                
             }
 
             if (distance > chaseDistance)

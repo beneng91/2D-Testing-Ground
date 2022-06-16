@@ -10,6 +10,9 @@ public class characterController : MonoBehaviour
     public float sprintSpeed;
     public int attackStrength;
 
+    public float attackCombo = 1;
+    public float attackReset;
+
     public float jumpForce = 5;
     public float gravity = -10;
     public Transform groundCheck;
@@ -57,30 +60,28 @@ public class characterController : MonoBehaviour
         animator.SetBool("isGrounded", isGrounded);
          if (isGrounded)
         {
+            
             if (Input.GetButtonDown("Jump"))
             {
                 Jump();
             }
 
-            //Attack
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                
-                animator.SetTrigger("swordAttack");
-                
-                //enemyDamage.EnemyTakeDamage(attackStrength);
 
-            }
+
+
         }
 
          //Attack motion stop
          if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
         
             return;
-        
-         
-        
-        controller.Move(direction * Time.deltaTime);
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2"))
+
+            return;
+
+
+
+            controller.Move(direction * Time.deltaTime);
     }
 
     

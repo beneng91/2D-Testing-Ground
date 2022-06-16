@@ -45,7 +45,7 @@ public class HealthSystem : MonoBehaviour
 
     public void GameOver()
     {
-        if (playerCurrentHealth == 0)
+        if (playerCurrentHealth <= 0)
         {
             player.gameObject.SetActive(false);
             restartButton.gameObject.SetActive(true);
