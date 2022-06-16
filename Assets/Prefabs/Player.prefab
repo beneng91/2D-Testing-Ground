@@ -193,11 +193,8 @@ MonoBehaviour:
   controller: {fileID: 7645289190219681380}
   speed: 8
   sprintSpeed: 1.5
-  attackStrength: 0
-  attackCombo: 1
-  attackReset: 0
-  jumpForce: 6
-  gravity: -10
+  jumpForce: 2.5
+  gravity: -9.81
   groundCheck: {fileID: 7645289189927992698}
   groundLayer:
     serializedVersion: 2

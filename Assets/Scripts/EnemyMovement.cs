@@ -12,6 +12,8 @@ public class EnemyMovement : MonoBehaviour
 {
     public Transform target;
     NavMeshAgent agent;
+ 
+
     public HealthSystem damage;
     public Animator animator;
 
@@ -36,6 +38,8 @@ public class EnemyMovement : MonoBehaviour
         damage = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthSystem>();
         health = maxHealth;
 
+        
+
         //Enemy jumping over gaps
         agent = GetComponent<NavMeshAgent>();
         agent.autoTraverseOffMeshLink = false;
@@ -51,6 +55,8 @@ public class EnemyMovement : MonoBehaviour
             }
             yield return null;
         }
+
+        
 
     }
     IEnumerator Parabola(NavMeshAgent agent, float height, float duration)
@@ -72,6 +78,8 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(transform.position, target.position);
+
+        
         agent.destination = target.position;
         
 
