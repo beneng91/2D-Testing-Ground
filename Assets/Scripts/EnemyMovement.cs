@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum OffMeshLinkMoveMethod
+{
+    Parabola,
+}
+
 public class EnemyMovement : MonoBehaviour
 {
     public Transform target;
@@ -11,6 +16,8 @@ public class EnemyMovement : MonoBehaviour
     public Animator animator;
 
     private string currentState = "idleState";
+
+    public OffMeshLinkMoveMethod m_Method = OffMeshLinkMoveMethod.Parabola;
 
     public int health;
     public int maxHealth;
@@ -28,17 +35,37 @@ public class EnemyMovement : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
         damage = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthSystem>();
         health = maxHealth;
+
+        //Enemy jumping over gaps
         agent = GetComponent<NavMeshAgent>();
         agent.autoTraverseOffMeshLink = false;
         while (true)
         {
             if (agent.isOnOffMeshLink)
             {
+                if (m_Method == OffMeshLinkMoveMethod.Parabola)
+                    yield return StartCoroutine(Parabola(agent, 2.0f, 0.5f));
+
                 Debug.Log("Mesh link jump");
+                agent.CompleteOffMeshLink();
             }
             yield return null;
         }
 
+    }
+    IEnumerator Parabola(NavMeshAgent agent, float height, float duration)
+    {
+        OffMeshLinkData data = agent.currentOffMeshLinkData;
+        Vector3 startPos = agent.transform.position;
+        Vector3 endPos = data.endPos + Vector3.up * agent.baseOffset;
+        float normalizedTime = 0.0f;
+        while (normalizedTime < 1.0f)
+        {
+            float yOffset = height * 4.0f * (normalizedTime - normalizedTime * normalizedTime);
+            agent.transform.position = Vector3.Lerp(startPos, endPos, normalizedTime) + yOffset * Vector3.up;
+            normalizedTime += Time.deltaTime / duration;
+            yield return null;
+        }
     }
 
 
@@ -133,4 +160,6 @@ public class EnemyMovement : MonoBehaviour
         GetComponent<BoxCollider>().enabled = false;
         this.enabled = false;
     }
+
+
 }

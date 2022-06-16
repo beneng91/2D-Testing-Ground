@@ -7,8 +7,7 @@ public class PlayerAttackCombo : MonoBehaviour
     public Animator animator;
     public Transform groundCheck;
     public LayerMask groundLayer;
-    private Vector3 direction;
-    public float jumpForce = 5;
+
 
     public bool firstButtonPressed;
     public float timeOfFirstButton;
@@ -74,8 +73,5 @@ public class PlayerAttackCombo : MonoBehaviour
             }
 
     }
-    private void Jump()
-    {
-        direction.y = jumpForce;
-    }
+
 }

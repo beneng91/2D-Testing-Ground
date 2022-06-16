@@ -8,13 +8,10 @@ public class characterController : MonoBehaviour
     private Vector3 direction;
     public float speed = 8;
     public float sprintSpeed;
-    public int attackStrength;
 
-    public float attackCombo = 1;
-    public float attackReset;
-
-    public float jumpForce = 5;
-    public float gravity = -10;
+        
+    public float jumpForce = 2.5f;
+    public float gravity = -9.81f;
     public Transform groundCheck;
     public LayerMask groundLayer;
 
@@ -56,23 +53,31 @@ public class characterController : MonoBehaviour
         
         
 
-         bool isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f,groundLayer);
+         bool isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
         animator.SetBool("isGrounded", isGrounded);
          if (isGrounded)
         {
             
             if (Input.GetButtonDown("Jump"))
             {
-                Jump();
+                if (isGrounded == true)
+                {
+                    Jump();
+                }
+                
             }
 
+            if (isGrounded && direction.y < 0)
+            {
+                direction.y = -4f;
+            }
 
-
-
+            
         }
 
-         //Attack motion stop
-         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
+        
+        //Attack motion stop
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
         
             return;
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2"))
@@ -87,7 +92,7 @@ public class characterController : MonoBehaviour
     
 
 
-    private void Jog()
+     void Jog()
     {
         float hInput = Input.GetAxis("Horizontal");
 
@@ -104,13 +109,14 @@ public class characterController : MonoBehaviour
         }
     }
 
-    private void Sprint()
+     void Sprint()
     {
         float hInput = Input.GetAxis("Horizontal");
 
         direction.x = hInput * (speed * sprintSpeed);
 
         direction.y += gravity * Time.deltaTime;
+        
 
         animator.SetFloat("speed", Mathf.Abs(hInput));
 
@@ -121,9 +127,10 @@ public class characterController : MonoBehaviour
         }
     }
 
-    private void Jump()
+     void Jump()
     {
-        direction.y = jumpForce;
+        //direction.y = jumpForce;
+        direction.y = Mathf.Sqrt(jumpForce * -2f * gravity);
     }
 
 
