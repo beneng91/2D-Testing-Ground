@@ -47,8 +47,10 @@ public class EnemyMovement : MonoBehaviour
         {
             if (agent.isOnOffMeshLink)
             {
+                animator.SetTrigger("jump");
                 if (m_Method == OffMeshLinkMoveMethod.Parabola)
                     yield return StartCoroutine(Parabola(agent, 2.0f, 0.5f));
+
 
                 Debug.Log("Mesh link jump");
                 agent.CompleteOffMeshLink();
