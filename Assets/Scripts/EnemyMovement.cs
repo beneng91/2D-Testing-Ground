@@ -12,9 +12,8 @@ public class EnemyMovement : MonoBehaviour
 {
     public Transform target;
     NavMeshAgent agent;
- 
 
-    public HealthSystem damage;
+
     public Animator animator;
 
     private string currentState = "idleState";
@@ -30,13 +29,14 @@ public class EnemyMovement : MonoBehaviour
     float lastAttack;
     public float attackDelay = 1;
     public float speed = 3;
+    
 
 
     IEnumerator Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        damage = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthSystem>();
         health = maxHealth;
+        
 
         
 
@@ -52,7 +52,6 @@ public class EnemyMovement : MonoBehaviour
                     yield return StartCoroutine(Parabola(agent, 2.0f, 0.5f));
 
 
-                Debug.Log("Mesh link jump");
                 agent.CompleteOffMeshLink();
             }
             yield return null;
@@ -80,13 +79,14 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(transform.position, target.position);
-
-        
         agent.destination = target.position;
+
         
 
         if (currentState == "idleState")
         {
+            animator.SetTrigger("idle");
+
             if (distance < chaseDistance)
             {
                 currentState = "chaseState";
@@ -109,7 +109,12 @@ public class EnemyMovement : MonoBehaviour
                 if (distance >= 1.8f)
                 {
                     transform.Translate(transform.right * speed * Time.deltaTime);
-                    transform.rotation = Quaternion.Euler(0, 180, 0);
+
+                    if (target.position.x > transform.position.x + 0.015f)
+                    {
+                        transform.rotation = Quaternion.Euler(0, 180, 0);
+                    }
+
                 }
 
             }
@@ -120,15 +125,25 @@ public class EnemyMovement : MonoBehaviour
                 if (distance >= 1.8f)
                 {
                     transform.Translate(-transform.right * speed * Time.deltaTime);
-                    transform.rotation = Quaternion.identity;
+                    
+
+                    if(distance > 1f)
+                    {
+                        transform.rotation = Quaternion.identity;
+                    }
+
                 }
                 
             }
 
             if (distance > chaseDistance)
             {
+                animator.SetTrigger("idle");
+
                 currentState = "idleState";
             }
+
+
 
         }
         else if (currentState == "attackState")
@@ -136,8 +151,7 @@ public class EnemyMovement : MonoBehaviour
             animator.SetBool("isAttacking", true);
 
             if (Time.time > lastAttack + attackDelay)
-            {
-                //damage.TakeDamage(attackStrength);
+            {                
                 lastAttack = Time.time;
             }
 
@@ -145,13 +159,9 @@ public class EnemyMovement : MonoBehaviour
             {
                 currentState = "chaseState";
             }
-        }
+        }        
     }
 
-    public void PlayerTakeDamage()
-    {
-        damage.TakeDamage(attackStrength);
-    }
 
     public void EnemyTakeDamage(int damage)
     {

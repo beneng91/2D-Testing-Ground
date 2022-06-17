@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.7802289, z: 3}
-  m_Center: {x: 0.000000074505806, y: -0.109885484, z: -0.00000014901161}
+  m_Size: {x: 1.6130495, y: 1.8450767, z: 1.5936546}
+  m_Center: {x: -0.031721592, y: -0.1957205, z: -0.01608111}
 --- !u!195 &2652083579189670567
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -133,12 +133,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  damage: {fileID: 0}
   animator: {fileID: 2652083578077170920}
   m_Method: 0
   health: 0
   maxHealth: 100
-  chaseDistance: 15
+  chaseDistance: 10
   attackStrength: 0
   attackDistance: 1.8
   attackDelay: 1
@@ -169,13 +168,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2886664593633886024}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acc2520ab94bfd847b2464c933ef51a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  damage: {fileID: 0}
   animator: {fileID: 0}
   m_Method: 0
   health: 0
@@ -185,6 +183,20 @@ MonoBehaviour:
   attackDistance: 1
   attackDelay: 1
   speed: 4
+--- !u!114 &8223336475500624025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2886664593633886024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87904aeeb61bfe242999acf1eeae2f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: {fileID: 0}
+  attackStrength: 10
 --- !u!1001 &2652083579071463961
 PrefabInstance:
   m_ObjectHideFlags: 0

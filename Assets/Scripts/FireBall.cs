@@ -26,7 +26,6 @@ public class FireBall : MonoBehaviour
         {
 
             damage.TakeDamage(10);
-            //Debug.Log("Took damage :)");
             Destroy(gameObject);
 
         }
@@ -40,6 +39,5 @@ public class FireBall : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         Destroy(gameObject);
-        Debug.Log("I got destroyed :(");
     }
 }

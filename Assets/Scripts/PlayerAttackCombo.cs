@@ -29,46 +29,44 @@ public class PlayerAttackCombo : MonoBehaviour
             if (isGrounded)
             {
 
-
-             //Attack
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                //Debug.Log("First Attack");
-                //animator.SetTrigger("swordAttack");
-                if (Input.GetKeyDown(KeyCode.Mouse0) && firstButtonPressed)
+                //Attack
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    if (Time.time - timeOfFirstButton < 2f)
-                    {                       
-                        Debug.Log("Second Attack");
-                        animator.SetTrigger("swordAttack2");
-                        timeOfFirstButton = 0;
-                    }
-                    else
+                    if (!firstButtonPressed)
                     {
-                        Debug.Log("Too late");
+                        Debug.Log("First Attack");
+                        animator.SetTrigger("swordAttack");
+                        firstButtonPressed = true;
+                        timeOfFirstButton = Time.time;
+                    }
+                    else if (firstButtonPressed)
+                    {
+                        if (Time.time - timeOfFirstButton < 1f)
+                        {
+                            animator.SetTrigger("swordAttack2");
+                            Debug.Log("Second Attack");
+
+                            timeOfFirstButton = 0;                       
+                        }
+
+                        else
+                        {
+                            animator.SetTrigger("swordAttack");
+                            Debug.Log("Too late");
+                        }
+
+                        reset = true;
+
                     }
 
-                    reset = true;
+                    if (reset)
+                    {
+                        firstButtonPressed = false;
+                        reset = false;
+                    }
+
 
                 }
-
-                if (Input.GetKeyDown(KeyCode.Mouse0) && !firstButtonPressed)
-                {
-                    Debug.Log("First Attack");
-                    animator.SetTrigger("swordAttack");
-                    firstButtonPressed = true;
-                    timeOfFirstButton = Time.time;
-
-                }
-
-                if (reset)
-                {
-                    firstButtonPressed = false;
-                    reset = false;
-                }
-
-
-            }
 
             }
 

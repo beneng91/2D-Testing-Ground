@@ -52,10 +52,18 @@ public class HealthSystem : MonoBehaviour
             quitButton.gameObject.SetActive(true);
             gameOutputText.gameObject.SetActive(true);
             gameOutputText.text = "Game Over";
-
-
-
         }
+    }
+    public void FellGameOver()
+    {
+        
+        
+            player.gameObject.SetActive(false);
+            restartButton.gameObject.SetActive(true);
+            quitButton.gameObject.SetActive(true);
+            gameOutputText.gameObject.SetActive(true);
+            gameOutputText.text = "Game Over";
+        
     }
     public void RestartLevel()
     {

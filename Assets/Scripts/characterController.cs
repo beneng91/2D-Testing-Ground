@@ -25,7 +25,6 @@ public class characterController : MonoBehaviour
 
     private void Start()
     {
-        enemyDamage = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyMovement>();
 
     }
 
@@ -53,7 +52,7 @@ public class characterController : MonoBehaviour
         
         
 
-         bool isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
+        bool isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
         animator.SetBool("isGrounded", isGrounded);
          if (isGrounded)
         {
@@ -77,11 +76,10 @@ public class characterController : MonoBehaviour
 
         
         //Attack motion stop
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
-        
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))        
             return;
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2"))
 
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2"))
             return;
 
 
