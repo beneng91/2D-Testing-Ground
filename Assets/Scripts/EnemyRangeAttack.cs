@@ -35,14 +35,14 @@ public class EnemyRangeAttack : MonoBehaviour
                                    
                     Debug.DrawLine(enemy.transform.position, enemy.transform.forward, Color.red, LayerMask.NameToLayer("Player"));
                     transform.LookAt(target);
-                    attack();
+                    Attack();
                     lastAttack = Time.time;
                 
             }
         }
     }
 
-    private void attack()
+    private void Attack()
     {
         GameObject newfireball = Instantiate(FireBall, transform.position + (transform.forward * 1), transform.rotation);
         newfireball.GetComponent<Rigidbody>().AddForce(transform.forward * projectileForce, ForceMode.Impulse);

@@ -19,7 +19,7 @@ public class UIMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void GameSetUp()
@@ -40,6 +40,7 @@ public class UIMenu : MonoBehaviour
 
 
     }
+
 
 
     public void QuitGame()
