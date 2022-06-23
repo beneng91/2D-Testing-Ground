@@ -432,6 +432,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 552735107}
+    - target: {fileID: 986772061455205137, guid: 9b2ce710eff8b044a99e09500b402f30, type: 3}
+      propertyPath: attackDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 986772061455205138, guid: 9b2ce710eff8b044a99e09500b402f30, type: 3}
       propertyPath: m_Name
       value: Turrent (3)
@@ -595,7 +599,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187476659}
-  m_LocalRotation: {x: 0.16018225, y: 0.000000023309845, z: -0.000000003782667, w: 0.9870875}
+  m_LocalRotation: {x: 0.16018222, y: 0.000000025470568, z: -0.0000000041333035, w: 0.9870875}
   m_LocalPosition: {x: -9.09, y: 5.63, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1952,6 +1956,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 552735107}
+    - target: {fileID: 986772061455205137, guid: 9b2ce710eff8b044a99e09500b402f30, type: 3}
+      propertyPath: attackDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 986772061455205138, guid: 9b2ce710eff8b044a99e09500b402f30, type: 3}
       propertyPath: m_Name
       value: Turrent (1)
@@ -4172,7 +4180,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636843249}
-  m_LocalRotation: {x: 0.16018225, y: 0.000000023309845, z: -0.000000003782667, w: 0.9870875}
+  m_LocalRotation: {x: 0.16018222, y: 0.000000025470568, z: -0.0000000041333035, w: 0.9870875}
   m_LocalPosition: {x: -9.09, y: 5.63, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
