@@ -22,9 +22,15 @@ public class characterController : MonoBehaviour
 
     public Transform model;
 
+    public Transform targetTransform;
+    private Camera mainCamera;
+    public LayerMask mouseAimMask;
+    public GameObject fireballPrefab;
+
 
     private void Start()
     {
+        mainCamera = Camera.main;
 
     }
 
@@ -32,6 +38,21 @@ public class characterController : MonoBehaviour
 
     void Update()
     {
+        //Working on mouse aiming
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mouseAimMask))
+        {
+            targetTransform.position = hit.point;
+        }
+
+        /*if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            var fb = Instantiate(fireballPrefab);
+            fb.transform.position = targetTransform.position;
+            var shot = fb.GetComponent<FireBall>();
+            
+        }*/
         
 
         //Sprint
